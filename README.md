@@ -18,7 +18,7 @@ examples, please visit to jsfiddle. [DEMO](https://jsfiddle.net/DOCXJSDEV/9t9x8x
     </head>
     <body>
         <input id="inputFiles" type="file" name="files[]" multiple="false">
-        <div id="loaded-layout" style="width:100%;"></div>
+        <div id="loaded-layout" style="width:100%;height:800px;"></div>
         <script>
             $(document).ready(function(){
                 var $inputFiles = $('#inputFiles');
