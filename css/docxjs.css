@@ -1,0 +1,360 @@
+html, body {
+  margin : inherit;
+  width : 100%;
+  height : 100%;
+  min-width: 1024px;
+}
+
+* {
+  box-sizing: border-box;
+}
+:after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#header {
+  background-color: #8b71b8;
+  width : 100%;
+  height: 200px;
+  padding: 44px 0 37px 0;
+  -webkit-transition: height 1s, padding 1s;
+  transition:height 1s, padding 1s;
+  overflow:hidden;
+}
+.is-docxjs-rendered #header {
+  height : 100px;
+  padding: 5px 0 20px 0;
+}
+
+#header .container{
+  width : 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#header .container .row{
+  margin-right: -15px;
+  margin-left: -15px;
+}
+#header .container .row:before{
+  display: table;
+  content: " ";
+}
+#header .container .row:after{
+  clear: both;
+  display: table;
+  content: " ";
+}
+
+#header .container .row div{
+  float : left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#header .col1{
+  width : 5%;
+  -webkit-transition: width 1s;
+  transition:width 1s;
+  text-align: right;
+  color : #ffffff;
+  padding: 40px 0px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11pt;
+}
+
+#header .col3{
+  width : 5%;
+  -webkit-transition: width 1.5s;
+  transition:width 1s;
+  text-align: left;
+  padding: 23px 0px;
+}
+
+#header .col1 .title, #header .col3 .question{
+  display : none;
+}
+
+#header .col2 {
+  width : 90%;
+  -webkit-transition: width 1s;
+  transition:width 1s;
+}
+
+.is-docxjs-rendered #header .col1,
+.is-docxjs-rendered #header .col3
+{
+  width : 35%;
+}
+
+.is-docxjs-rendered #header .col1 span,
+.is-docxjs-rendered #header .col3 span
+{
+  display : inline-block;
+}
+
+
+.is-docxjs-rendered #header .col2
+{
+  width : 30%;
+}
+
+#header .container .row .logo{
+  width : 30%;
+  text-align: center;
+  border-right:1px solid #ffffff;
+  padding: 27px 0;
+}
+#header .container .row .logo .logo-image{
+  display : inline-block;
+  max-height: 70px;
+}
+#header .container .row .logo .logo-land-image{
+  display : none;
+}
+
+
+.is-docxjs-rendered #header .container .row .logo{
+  width : 100%;
+  text-align: center;
+  border-right:none;
+  padding: 25px 0;
+}
+
+.is-docxjs-rendered #header .container .row .logo .logo-land-image {
+  display : inline-block;
+  max-height: 45px;
+}
+.is-docxjs-rendered #header .container .row .logo .logo-image {
+  display : none;
+}
+
+#header .container .row .contact{
+  width : 70%;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size : 13pt;
+  color : #ffffff;
+  padding-left: 80px;
+}
+#header .container .row .contact span{
+  display : block;
+}
+#header .container .row .contact .title{
+  font-weight: bold;
+  font-style: italic;
+  font-size: 16pt;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+#header .container .row .contact .description{
+  font-size: 10pt;
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 10px;
+}
+#header .container .row .contact .question{
+  margin-top: 25px;
+}
+
+.is-docxjs-rendered .col2 .contact {
+  display : none;
+}
+
+
+.hide-btn {
+  width: 35px;
+  height: 35px;
+  margin-top: 6px;
+  float: right;
+  margin-right: 20px;
+  text-align: center;
+  border: 3px solid #ffffff;
+  border-radius: 35px;
+  right: 0;
+  top: 0px;
+  position: absolute;
+  color: #fff;
+  padding:5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.hide-btn svg{
+  fill : #ffffff;
+}
+
+.hide-btn.hide {
+  width: 35px;
+  height: 35px;
+  margin-top: 6px;
+  float: right;
+  margin-right: 20px;
+  text-align: center;
+  border: 3px solid #8b71b8;
+  border-radius: 35px;
+  right: 0;
+  top: 0px;
+  position: absolute;
+  color: #8b71b8;
+  padding:5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.hide-btn.hide svg{
+  fill : #8b71b8;
+}
+
+
+.menu-hide #header {
+  padding:0px;
+  height : 0px;
+}
+.menu-hide #header .container{
+  display : none;
+}
+
+
+#main {
+  width: 100%;
+  height: calc(100% - 100px);
+  position: relative;
+}
+.menu-hide #main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+
+#main .container{
+  width : 100%;
+  height : 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#main .container #docxjs-drag-drop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#main .container #docxjs-drag-drop #drag-drag-area{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  padding: 100px 50px 50px 50px;
+}
+
+#main .container #docxjs-drag-drop #drag-drag-area img {
+  cursor: pointer;
+  margin: auto;
+  height: 80%!important
+}
+
+#main .container #docxjs-drag-drop #drag-drag-area #button-container {
+  text-align: center;
+  color: #ffffff;
+}
+
+#main .container #docxjs-drag-drop #drag-drag-area img.drag-on
+{
+  background-color: #653298;
+  opacity: 0.5;
+}
+
+#main .container #files {
+  display: none;
+}
+
+.docx-loading {
+  border-bottom: 6px solid #fff;
+  border-left: 6px solid #fff;
+  border-right: 6px solid #c30;
+  border-top: 6px solid #c30;
+  border-radius: 100%;
+  height: 140px;
+  width: 140px;
+  z-index: 1000;
+  -webkit-animation: spin .6s infinite linear;
+  -moz-animation: spin .6s infinite linear;
+  -ms-animation: spin .6s infinite linear;
+  -o-animation: spin .6s infinite linear;
+  animation: spin .6s infinite linear;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -70px;
+  margin-left: -70px;
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+
+}
+
+@-ms-keyframes spin {
+  from {
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+
+}
+
+@-o-keyframes spin {
+  from {
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Only Javascript & HTML5 Document Platform | DOCXJS</title>
+    <meta name="description" content="DOCXJS is the only Javascript based docx documents platform - provide with extracting data, HTML5 viewer, creating document online and offline">
+    <meta name="content" content="docxjs, docx, html5 document, only javascript document, html5 docx, only javascript docx, html5 document tool, extracting document, html5 document viewer, creating document, dev tool, extracting docx, html5 docx viewer, creating docx">
+    <meta name="author" content="DOCXJS">
+    <link href="css/docxjs.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/docxjs-1.0.0.min.js"></script>
+
+</head>
+<body style="overflow: hidden;">
+<div id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col1">
+                <span class="title">ONLY JAVASCRIPT DOCUMENT PLATFORM</span>
+            </div>
+            <div class="col2">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Logo" class="logo-image"/>
+                    <img src="images/logo-landscape.png" alt="Logo-Landscape" class="logo-land-image"/>
+                </div>
+                <div class="contact">
+                    <span class="title">ONLY JAVASCRIPT DOCUMENT PLATFORM</span>
+                    <span class="description">Use HTML5 Viewer Online and Offline. View docx documents from HTML5-based browser.</span>
+                    <span class="question"><a target="_blank" href="https://www.docxjs.com/#contact"><img
+                            src="images/btn_ask.png" alt="Ask Question"/></a></span>
+                </div>
+            </div>
+            <div class="col3">
+                <span class="question"><a target="_blank" href="https://www.docxjs.com/#contact"><img
+                        src="images/btn_ask.png" alt="Ask Question"/></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hide-btn">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="32px" y="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+                <g><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"></path></g></svg>
+</div>
+<div id="main">
+    <div class="container">
+        <div id="docxjs-drag-drop">
+            <div id="drag-drag-area">
+                <img src="images/drag.jpg" alt="Logo" class="logo-image"/>
+            </div>
+            <input id="files" type="file" name="files[]" multiple="false"/>
+        </div>
+        <div id="docxjs-wrapper" style="width:100%; height:100%;"></div>
+    </div>
+</div>
+</body>
+
+<script>
+    var $body = $('body');
+    var $extension = $('#main');
+    var $dragDrop = $extension.find("#docxjs-drag-drop");
+    var $dragDropArea = $dragDrop.find("#drag-drag-area img");
+    var $files = $dragDrop.find("#files");
+    var $docxjsWrapper = $extension.find("#docxjs-wrapper");
+    var $menuHideBtn = $body.find(".hide-btn");
+
+    var docxJS = new DocxJS();
+    var afterRender = function () {
+        var element = $docxjsWrapper[0];
+        var loadingNode = document.createElement("div");
+        loadingNode.setAttribute("class", 'docx-loading');
+        element.parentNode.insertBefore(loadingNode, element);
+        $dragDrop.hide();
+
+        docxJS.render(element, function (result) {
+            if (result.isError) {
+                if(!$body.hasClass('is-docxjs-rendered')){
+                    $dragDrop.show();
+                    $docxjsWrapper.hide();
+                    $body.removeClass('is-docxjs-rendered');
+                    element.innerHTML = "";
+
+                    $body.addClass('rendered');
+                }
+            } else {
+                $body.addClass('is-docxjs-rendered');
+                console.log("Success Render");
+            }
+
+            loadingNode.parentNode.removeChild(loadingNode);
+        });
+    };
+
+    $files.on('change', function (e) {
+        var files = e.target.files;
+        if (e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+
+        e.returnValue = false;
+        e.cancelBubble = true;
+        e.stopped = true;
+
+        docxJS.parse(
+            files[0],
+            function () {
+                $docxjsWrapper[0].filename = files[0].name;
+                afterRender();
+            }, function (e) {
+                if(!$body.hasClass('is-docxjs-rendered')){
+                    $dragDrop.show();
+                    $docxjsWrapper.hide();
+                }
+                if(e.isError && e.msg){
+                    alert(e.msg);
+                }
+            }
+        );
+    });
+
+
+    var stopEvent = function(e){
+        if (e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+
+        e.returnValue = false;
+        e.cancelBubble = true;
+        e.stopped = true;
+    };
+
+    var renderDocxJS = function (file) {
+        docxJS.parse(
+            file,
+            function () {
+                afterRender();
+            }, function (e) {
+                if(!$body.hasClass('is-docxjs-rendered')){
+                    $dragDrop.show();
+                    $docxjsWrapper.hide();
+                }
+                if(e.isError && e.msg){
+                    alert(e.msg);
+                }
+            }
+        );
+    };
+
+
+    $dragDropArea.on("click", function () {
+        $files.trigger("click");
+    }).on("dragover", function (e) {
+        stopEvent(e);
+        e.originalEvent.dataTransfer.dropEffect = 'copy';
+
+        $dragDropArea.addClass("drag-on");
+    }).on("dragenter", function (e) {
+        stopEvent(e);
+    }).on("dragleave", function (e) {
+        stopEvent(e);
+        $dragDropArea.removeClass("drag-on");
+    }).on("drop", function (e) {
+        $dragDropArea.removeClass("drag-on");
+
+        if (e.originalEvent.dataTransfer) {
+            if (e.originalEvent.dataTransfer.files.length) {
+                if (e.preventDefault) e.preventDefault();
+                if (e.stopPropagation) e.stopPropagation();
+
+                renderDocxJS(e.originalEvent.dataTransfer.files[0]);
+            }
+        }
+    });
+
+    $menuHideBtn.on("click", function () {
+        if($menuHideBtn.hasClass('hide')){
+            $body.removeClass('menu-hide');
+            $menuHideBtn.removeClass('hide');
+        }else{
+            $body.addClass('menu-hide');
+            $menuHideBtn.addClass('hide');
+        }
+    });    
+</script>
+
+</html>
