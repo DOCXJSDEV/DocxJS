@@ -51,13 +51,13 @@ examples, please visit to jsfiddle. [DEMO](https://jsfiddle.net/DOCXJSDEV/9t9x8x
 [Only Javascript]
 * Whether you are online or offline, all you need for DOCXJS is an internet browser because it is implemented in JavaScript only.
 
-[Provide Data]
+[Provide Data] [DEMO](https://www.docxjs.com/demo/provide)
 * Use a simple Json data provided by DOCXJS. You can easily turn a set of DB data into a document and vice versa.
 
-[Extract Docx]
+[Extract Docx] [DEMO](https://www.docxjs.com/demo/extract)
 * DOCXJS can extract data not only from a text-based document, but also a Word document with shapes and style.
 
-[RENDERING DOCX] 
+[RENDERING DOCX] [DEMO](https://www.docxjs.com/demo/viewer)
 * DOCXJS documents can be rendered from HTML5-based browser in any OS or device.
 
 
