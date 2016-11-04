@@ -1,7 +1,7 @@
 [![|DOCXJS](https://www.docxjs.com/images/poweredbydocxjs.png)](https://www.docxjs.com) 
 
 ## DOCXJS
-> No sever! Only Javascript - HTML5 document platform 
+> No server! Only Javascript - HTML5 document platform 
 
 examples, please visit to jsfiddle. [DEMO](https://jsfiddle.net/DOCXJSDEV/9t9x8xL9/1/)
 
